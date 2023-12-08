@@ -1,8 +1,8 @@
 """
 Filename: TVGUI.py
 Author: Taliesin Reese
-Verion: 1.0
-Date: 11/11/2023
+Verion: 1.1
+Date: 12/8/2023
 Purpose: Regularly-scheduled programming
 """
 import tkinter
@@ -41,9 +41,6 @@ def guiLayout(win: tkinter.Tk)->None:
     win.canvas = tkinter.Canvas(win, width = 500, height = 250)
     win.canvas.place(x = 0, y = 0)
     win.bg = win.canvas.create_image((250, 125), image = win.bgimg)
-    #status label
-    win.statuslbl = tkinter.Label(win, text = "Power:False Mute:False Channel:0 Volume:0")
-    win.statuslbl.place(x = 250, y = 20)
     #player
     win.player0 = cv2.VideoCapture(r"Video (0).mp4")
     win.video0 = win.canvas.create_image((129,97), image = win.bgimg)

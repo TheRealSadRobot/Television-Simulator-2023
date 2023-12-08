@@ -1,8 +1,8 @@
 """
 Filename: television.py
 Author: Talieisn Reese
-Version: 2.0
-Date: 11/10/2023
+Version: 2.1
+Date: 12/8/2023
 Purpose: Now in glorious Visuals
 """
 import tkinter
@@ -55,7 +55,6 @@ class Television:
     self.vidUpdate()
     self.soundUpdate()
     #just a little housekeeping here.
-    self.setLbl()
     self.window.powbtn.config(image = self.window.powup)
   def mute(self)->None:
     """Stop the volume. Only works if TV is ON"""
@@ -66,7 +65,6 @@ class Television:
         self.__muted = True
       self.soundUpdate()
     #don't mind me, just resetting the button image
-    self.setLbl()
     self.window.mutebtn.config(image = self.window.muteup)
   def channel_up(self)->None:
     """Iterate channel up by one. If channel is at maximum, loop back to minimum. Only works if TV is ON"""
@@ -78,7 +76,6 @@ class Television:
       self.vidUpdate()
       self.soundUpdate()
     #this'll just take a minute.
-    self.setLbl()
     self.window.chnupbtn.config(image = self.window.chnupup)
   def channel_down(self)->None:
     """Iterate channel down by one. If channel is at minimum, loop back to maximum. Only works if TV is ON"""
@@ -90,7 +87,6 @@ class Television:
       self.vidUpdate()
       self.soundUpdate()
     #Here, let me fix that up for you.
-    self.setLbl()
     self.window.chndownbtn.config(image = self.window.chndownup)
   def volume_up(self)->None:
     """Iterate volume up by one. If volume is at maximum, don't iterate any longer. Automatically un-mutes the TV. Only works if TV is ON"""
@@ -101,7 +97,6 @@ class Television:
       self.soundUpdate()
       self.vidUpdate()
     #Oh, here's another one.
-    self.setLbl()
     self.window.volupbtn.config(image = self.window.volupup)
   def volume_down(self)->None:
     """Iterate volume down by one. If volume is at minimum, don't iterate any longer. Automatically un-mutes the TV. Only works if TV is ON"""
@@ -112,7 +107,6 @@ class Television:
       self.soundUpdate()
       self.soundUpdate()
     #I feel like the maid, like, "I just cleaned this mess up! Can it stay clean? Fo-for 10 MINUTES?"
-    self.setLbl()
     self.window.voldownbtn.config(image = self.window.voldownup)
 
   def __str__(self)->None:
@@ -205,9 +199,6 @@ class Television:
     self.window.video3duration = duration
     return self.window.video3duration
 
-  def setLbl(self):
-    """Update the Stat Label"""
-    self.window.statuslbl.config(text=f"Power:{self.__status} Mute:{self.__muted} Channel:{self.__channel} Volume:{self.__volume if self.__muted == False else 0}")
   def funcAssign(self)->None:
     """Assign functions to the buttons and other required Event calls"""
     #power
